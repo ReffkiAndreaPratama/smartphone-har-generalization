@@ -1,0 +1,599 @@
+{
+  "source": "uci_har",
+  "is_synthetic": false,
+  "source_label": "UCI HAR (data nyata)",
+  "notice": null,
+  "n_samples": 10299,
+  "n_features": 561,
+  "n_subjects": 30,
+  "n_train": 7352,
+  "n_test": 2947,
+  "class_distribution": [
+    {
+      "code": 0,
+      "activity": "WALKING",
+      "display": "Walking",
+      "n": 1722,
+      "pct": 16.72
+    },
+    {
+      "code": 1,
+      "activity": "WALKING_UPSTAIRS",
+      "display": "Walking Upstairs",
+      "n": 1544,
+      "pct": 14.99
+    },
+    {
+      "code": 2,
+      "activity": "WALKING_DOWNSTAIRS",
+      "display": "Walking Downstairs",
+      "n": 1406,
+      "pct": 13.65
+    },
+    {
+      "code": 3,
+      "activity": "SITTING",
+      "display": "Sitting",
+      "n": 1777,
+      "pct": 17.25
+    },
+    {
+      "code": 4,
+      "activity": "STANDING",
+      "display": "Standing",
+      "n": 1906,
+      "pct": 18.51
+    },
+    {
+      "code": 5,
+      "activity": "LAYING",
+      "display": "Laying",
+      "n": 1944,
+      "pct": 18.88
+    }
+  ],
+  "class_distribution_by_split": {
+    "train": {
+      "WALKING": 1226,
+      "WALKING_UPSTAIRS": 1073,
+      "WALKING_DOWNSTAIRS": 986,
+      "SITTING": 1286,
+      "STANDING": 1374,
+      "LAYING": 1407
+    },
+    "test": {
+      "WALKING": 496,
+      "WALKING_UPSTAIRS": 471,
+      "WALKING_DOWNSTAIRS": 420,
+      "SITTING": 491,
+      "STANDING": 532,
+      "LAYING": 537
+    }
+  },
+  "subjects": [
+    {
+      "subject": 1,
+      "split": "train",
+      "n_samples": 347,
+      "activities": {
+        "WALKING": 95,
+        "WALKING_UPSTAIRS": 53,
+        "WALKING_DOWNSTAIRS": 49,
+        "SITTING": 47,
+        "STANDING": 53,
+        "LAYING": 50
+      }
+    },
+    {
+      "subject": 2,
+      "split": "test",
+      "n_samples": 302,
+      "activities": {
+        "WALKING": 59,
+        "WALKING_UPSTAIRS": 48,
+        "WALKING_DOWNSTAIRS": 47,
+        "SITTING": 46,
+        "STANDING": 54,
+        "LAYING": 48
+      }
+    },
+    {
+      "subject": 3,
+      "split": "train",
+      "n_samples": 341,
+      "activities": {
+        "WALKING": 58,
+        "WALKING_UPSTAIRS": 59,
+        "WALKING_DOWNSTAIRS": 49,
+        "SITTING": 52,
+        "STANDING": 61,
+        "LAYING": 62
+      }
+    },
+    {
+      "subject": 4,
+      "split": "test",
+      "n_samples": 317,
+      "activities": {
+        "WALKING": 60,
+        "WALKING_UPSTAIRS": 52,
+        "WALKING_DOWNSTAIRS": 45,
+        "SITTING": 50,
+        "STANDING": 56,
+        "LAYING": 54
+      }
+    },
+    {
+      "subject": 5,
+      "split": "train",
+      "n_samples": 302,
+      "activities": {
+        "WALKING": 56,
+        "WALKING_UPSTAIRS": 47,
+        "WALKING_DOWNSTAIRS": 47,
+        "SITTING": 44,
+        "STANDING": 56,
+        "LAYING": 52
+      }
+    },
+    {
+      "subject": 6,
+      "split": "train",
+      "n_samples": 325,
+      "activities": {
+        "WALKING": 57,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 48,
+        "SITTING": 55,
+        "STANDING": 57,
+        "LAYING": 57
+      }
+    },
+    {
+      "subject": 7,
+      "split": "train",
+      "n_samples": 308,
+      "activities": {
+        "WALKING": 57,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 47,
+        "SITTING": 48,
+        "STANDING": 53,
+        "LAYING": 52
+      }
+    },
+    {
+      "subject": 8,
+      "split": "train",
+      "n_samples": 281,
+      "activities": {
+        "WALKING": 48,
+        "WALKING_UPSTAIRS": 41,
+        "WALKING_DOWNSTAIRS": 38,
+        "SITTING": 46,
+        "STANDING": 54,
+        "LAYING": 54
+      }
+    },
+    {
+      "subject": 9,
+      "split": "test",
+      "n_samples": 288,
+      "activities": {
+        "WALKING": 52,
+        "WALKING_UPSTAIRS": 49,
+        "WALKING_DOWNSTAIRS": 42,
+        "SITTING": 50,
+        "STANDING": 45,
+        "LAYING": 50
+      }
+    },
+    {
+      "subject": 10,
+      "split": "test",
+      "n_samples": 294,
+      "activities": {
+        "WALKING": 53,
+        "WALKING_UPSTAIRS": 47,
+        "WALKING_DOWNSTAIRS": 38,
+        "SITTING": 54,
+        "STANDING": 44,
+        "LAYING": 58
+      }
+    },
+    {
+      "subject": 11,
+      "split": "train",
+      "n_samples": 316,
+      "activities": {
+        "WALKING": 59,
+        "WALKING_UPSTAIRS": 54,
+        "WALKING_DOWNSTAIRS": 46,
+        "SITTING": 53,
+        "STANDING": 47,
+        "LAYING": 57
+      }
+    },
+    {
+      "subject": 12,
+      "split": "test",
+      "n_samples": 320,
+      "activities": {
+        "WALKING": 50,
+        "WALKING_UPSTAIRS": 52,
+        "WALKING_DOWNSTAIRS": 46,
+        "SITTING": 51,
+        "STANDING": 61,
+        "LAYING": 60
+      }
+    },
+    {
+      "subject": 13,
+      "split": "test",
+      "n_samples": 327,
+      "activities": {
+        "WALKING": 57,
+        "WALKING_UPSTAIRS": 55,
+        "WALKING_DOWNSTAIRS": 47,
+        "SITTING": 49,
+        "STANDING": 57,
+        "LAYING": 62
+      }
+    },
+    {
+      "subject": 14,
+      "split": "train",
+      "n_samples": 323,
+      "activities": {
+        "WALKING": 59,
+        "WALKING_UPSTAIRS": 54,
+        "WALKING_DOWNSTAIRS": 45,
+        "SITTING": 54,
+        "STANDING": 60,
+        "LAYING": 51
+      }
+    },
+    {
+      "subject": 15,
+      "split": "train",
+      "n_samples": 328,
+      "activities": {
+        "WALKING": 54,
+        "WALKING_UPSTAIRS": 48,
+        "WALKING_DOWNSTAIRS": 42,
+        "SITTING": 59,
+        "STANDING": 53,
+        "LAYING": 72
+      }
+    },
+    {
+      "subject": 16,
+      "split": "train",
+      "n_samples": 366,
+      "activities": {
+        "WALKING": 51,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 47,
+        "SITTING": 69,
+        "STANDING": 78,
+        "LAYING": 70
+      }
+    },
+    {
+      "subject": 17,
+      "split": "train",
+      "n_samples": 368,
+      "activities": {
+        "WALKING": 61,
+        "WALKING_UPSTAIRS": 48,
+        "WALKING_DOWNSTAIRS": 46,
+        "SITTING": 64,
+        "STANDING": 78,
+        "LAYING": 71
+      }
+    },
+    {
+      "subject": 18,
+      "split": "test",
+      "n_samples": 364,
+      "activities": {
+        "WALKING": 56,
+        "WALKING_UPSTAIRS": 58,
+        "WALKING_DOWNSTAIRS": 55,
+        "SITTING": 57,
+        "STANDING": 73,
+        "LAYING": 65
+      }
+    },
+    {
+      "subject": 19,
+      "split": "train",
+      "n_samples": 360,
+      "activities": {
+        "WALKING": 52,
+        "WALKING_UPSTAIRS": 40,
+        "WALKING_DOWNSTAIRS": 39,
+        "SITTING": 73,
+        "STANDING": 73,
+        "LAYING": 83
+      }
+    },
+    {
+      "subject": 20,
+      "split": "test",
+      "n_samples": 354,
+      "activities": {
+        "WALKING": 51,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 45,
+        "SITTING": 66,
+        "STANDING": 73,
+        "LAYING": 68
+      }
+    },
+    {
+      "subject": 21,
+      "split": "train",
+      "n_samples": 408,
+      "activities": {
+        "WALKING": 52,
+        "WALKING_UPSTAIRS": 47,
+        "WALKING_DOWNSTAIRS": 45,
+        "SITTING": 85,
+        "STANDING": 89,
+        "LAYING": 90
+      }
+    },
+    {
+      "subject": 22,
+      "split": "train",
+      "n_samples": 321,
+      "activities": {
+        "WALKING": 46,
+        "WALKING_UPSTAIRS": 42,
+        "WALKING_DOWNSTAIRS": 36,
+        "SITTING": 62,
+        "STANDING": 63,
+        "LAYING": 72
+      }
+    },
+    {
+      "subject": 23,
+      "split": "train",
+      "n_samples": 372,
+      "activities": {
+        "WALKING": 59,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 54,
+        "SITTING": 68,
+        "STANDING": 68,
+        "LAYING": 72
+      }
+    },
+    {
+      "subject": 24,
+      "split": "test",
+      "n_samples": 381,
+      "activities": {
+        "WALKING": 58,
+        "WALKING_UPSTAIRS": 59,
+        "WALKING_DOWNSTAIRS": 55,
+        "SITTING": 68,
+        "STANDING": 69,
+        "LAYING": 72
+      }
+    },
+    {
+      "subject": 25,
+      "split": "train",
+      "n_samples": 409,
+      "activities": {
+        "WALKING": 74,
+        "WALKING_UPSTAIRS": 65,
+        "WALKING_DOWNSTAIRS": 58,
+        "SITTING": 65,
+        "STANDING": 74,
+        "LAYING": 73
+      }
+    },
+    {
+      "subject": 26,
+      "split": "train",
+      "n_samples": 392,
+      "activities": {
+        "WALKING": 59,
+        "WALKING_UPSTAIRS": 55,
+        "WALKING_DOWNSTAIRS": 50,
+        "SITTING": 78,
+        "STANDING": 74,
+        "LAYING": 76
+      }
+    },
+    {
+      "subject": 27,
+      "split": "train",
+      "n_samples": 376,
+      "activities": {
+        "WALKING": 57,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 44,
+        "SITTING": 70,
+        "STANDING": 80,
+        "LAYING": 74
+      }
+    },
+    {
+      "subject": 28,
+      "split": "train",
+      "n_samples": 382,
+      "activities": {
+        "WALKING": 54,
+        "WALKING_UPSTAIRS": 51,
+        "WALKING_DOWNSTAIRS": 46,
+        "SITTING": 72,
+        "STANDING": 79,
+        "LAYING": 80
+      }
+    },
+    {
+      "subject": 29,
+      "split": "train",
+      "n_samples": 344,
+      "activities": {
+        "WALKING": 53,
+        "WALKING_UPSTAIRS": 49,
+        "WALKING_DOWNSTAIRS": 48,
+        "SITTING": 60,
+        "STANDING": 65,
+        "LAYING": 69
+      }
+    },
+    {
+      "subject": 30,
+      "split": "train",
+      "n_samples": 383,
+      "activities": {
+        "WALKING": 65,
+        "WALKING_UPSTAIRS": 65,
+        "WALKING_DOWNSTAIRS": 62,
+        "SITTING": 62,
+        "STANDING": 59,
+        "LAYING": 70
+      }
+    }
+  ],
+  "integrity": {
+    "n_missing_values": 0,
+    "n_infinite_values": 0,
+    "n_duplicate_rows": 0,
+    "n_duplicate_feature_names": 84,
+    "labels_valid": true,
+    "n_subjects": 30,
+    "n_train": 7352,
+    "n_test": 2947,
+    "raw_signals_available": true,
+    "raw_shape": [
+      10299,
+      128,
+      9
+    ],
+    "class_counts": {
+      "WALKING": 1722,
+      "WALKING_UPSTAIRS": 1544,
+      "WALKING_DOWNSTAIRS": 1406,
+      "SITTING": 1777,
+      "STANDING": 1906,
+      "LAYING": 1944
+    },
+    "n_features": 561,
+    "all_features_finite": true
+  },
+  "expected_checks": {
+    "n_features": {
+      "expected": 561,
+      "actual": 561,
+      "ok": true
+    },
+    "n_subjects": {
+      "expected": 30,
+      "actual": 30,
+      "ok": true
+    },
+    "n_train": {
+      "expected": 7352,
+      "actual": 7352,
+      "ok": true
+    },
+    "n_test": {
+      "expected": 2947,
+      "actual": 2947,
+      "ok": true
+    }
+  },
+  "feature_groups": {
+    "total": 561,
+    "kind": "uci_har",
+    "sensor_counts": {
+      "accelerometer_body": 292,
+      "accelerometer_gravity": 53,
+      "gyroscope_body": 213,
+      "other": 3
+    },
+    "domain_counts": {
+      "time": 265,
+      "frequency": 289,
+      "other": 7
+    },
+    "statistic_counts": {
+      "angle/other": 146,
+      "arCoeff": 80,
+      "mean": 33,
+      "std": 33,
+      "mad": 33,
+      "max": 33,
+      "min": 33,
+      "energy": 33,
+      "iqr": 33,
+      "entropy": 33,
+      "sma": 17,
+      "correlation": 15,
+      "meanFreq": 13,
+      "skewness": 13,
+      "kurtosis": 13
+    },
+    "groups": [
+      {
+        "name": "accelerometer_body",
+        "n": 292
+      },
+      {
+        "name": "gyroscope_body",
+        "n": 213
+      },
+      {
+        "name": "accelerometer_gravity",
+        "n": 53
+      },
+      {
+        "name": "other",
+        "n": 3
+      }
+    ],
+    "note": "561 fitur prakomputasi UCI HAR; bukan hasil ekstraksi ulang pipeline ini."
+  },
+  "metadata": {
+    "source": "uci_har",
+    "is_synthetic": false,
+    "dataset_name": "UCI Human Activity Recognition Using Smartphones",
+    "dataset_version": "1.0",
+    "repository_url": "https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones",
+    "doi": "10.24432/C54S4K",
+    "citation": "Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21st European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN), 2013.",
+    "license": "Dataset UCI HAR didistribusikan AS-IS. Penggunaan dalam publikasi wajib mensitasi Anguita et al. (2013). README dataset menyatakan penggunaan komersial dilarang.",
+    "device": "Samsung Galaxy S II",
+    "device_count": 1,
+    "position": "waist-mounted",
+    "sampling_rate_hz": 50,
+    "window_size": 128,
+    "window_seconds": 2.56,
+    "overlap": 0.5,
+    "activity_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "n_subjects": 30,
+    "subject_age_range": "19-48",
+    "official_split": "70% subjek train / 30% subjek test (subject-disjoint)",
+    "feature_source": "precomputed_features",
+    "n_duplicate_feature_names": 84,
+    "feature_name_note": "Nama fitur duplikat pada features.txt UCI diberi sufiks __dupN agar unik; urutan kolom tidak berubah.",
+    "feature_note": "561 fitur telah diekstrak oleh pembuat dataset dari sinyal 50 Hz. Pipeline ini tidak mengekstrak ulang fitur tersebut dari sinyal mentah.",
+    "fingerprint": "c2addc3655156426e87e9530b2dec8336c570b06b024b356d98fd294a287d20b",
+    "dataset_dir": "D:\\projects\\smartphone-har-generalization\\data\\raw\\UCI HAR Dataset",
+    "raw_signal_note": "Sinyal mentah 128x9 (body acc, body gyro, total acc) dipakai hanya oleh 1D-CNN."
+  }
+}

@@ -1,0 +1,1293 @@
+{
+  "experiment": "A_baseline",
+  "title": "Evaluasi baseline pada split resmi berbasis subjek",
+  "protocol": "official_subject_disjoint",
+  "seed": 42,
+  "created_at": "2026-10-22T13:20:22+07:00",
+  "dataset": {
+    "source": "uci_har",
+    "is_synthetic": false,
+    "notice": null,
+    "n_samples": 10299,
+    "n_features": 561,
+    "n_subjects": 30,
+    "subject_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "train_subjects": [
+      1,
+      3,
+      5,
+      6,
+      7,
+      8,
+      11,
+      14,
+      15,
+      16,
+      17,
+      19,
+      21,
+      22,
+      23,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "test_subjects": [
+      2,
+      4,
+      9,
+      10,
+      12,
+      13,
+      18,
+      20,
+      24
+    ],
+    "metadata": {
+      "dataset_name": "UCI Human Activity Recognition Using Smartphones",
+      "dataset_version": "1.0",
+      "repository_url": "https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones",
+      "doi": "10.24432/C54S4K",
+      "citation": "Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21st European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN), 2013.",
+      "license": "Dataset UCI HAR didistribusikan AS-IS. Penggunaan dalam publikasi wajib mensitasi Anguita et al. (2013). README dataset menyatakan penggunaan komersial dilarang.",
+      "device": "Samsung Galaxy S II",
+      "device_count": 1,
+      "sampling_rate_hz": 50,
+      "window_size": 128,
+      "window_seconds": 2.56,
+      "overlap": 0.5,
+      "feature_source": "precomputed_features",
+      "feature_note": "561 fitur telah diekstrak oleh pembuat dataset dari sinyal 50 Hz. Pipeline ini tidak mengekstrak ulang fitur tersebut dari sinyal mentah.",
+      "n_duplicate_feature_names": 84,
+      "official_split": "70% subjek train / 30% subjek test (subject-disjoint)",
+      "fingerprint": "c2addc3655156426e87e9530b2dec8336c570b06b024b356d98fd294a287d20b"
+    }
+  },
+  "split": {
+    "train_subjects": [
+      1,
+      3,
+      5,
+      6,
+      7,
+      8,
+      11,
+      14,
+      15,
+      16,
+      17,
+      19,
+      21,
+      22,
+      23,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "test_subjects": [
+      2,
+      4,
+      9,
+      10,
+      12,
+      13,
+      18,
+      20,
+      24
+    ],
+    "n_train": 7352,
+    "n_test": 2947,
+    "guardrail": "Tidak ada subjek/indeks yang tumpang tindih."
+  },
+  "models": {
+    "random_forest": {
+      "display_name": "Random Forest",
+      "params": {
+        "n_estimators": 300,
+        "n_jobs": -1,
+        "max_features": "sqrt",
+        "min_samples_leaf": 3
+      },
+      "selection": {
+        "method": "GroupKFold(n_splits=3) pada subjek data latih",
+        "params": {
+          "n_estimators": 300,
+          "n_jobs": -1,
+          "max_features": "sqrt",
+          "min_samples_leaf": 3
+        },
+        "selected": {
+          "max_features": "sqrt",
+          "min_samples_leaf": 3
+        },
+        "cv_results": [
+          {
+            "params": {
+              "max_features": "sqrt",
+              "min_samples_leaf": 1
+            },
+            "mean_macro_f1": 0.8844575686345584,
+            "std_macro_f1": 0.03236937640898587,
+            "fold_scores": [
+              0.9194862553924145,
+              0.855650756211103,
+              0.8782356943001576
+            ]
+          },
+          {
+            "params": {
+              "max_features": "sqrt",
+              "min_samples_leaf": 3
+            },
+            "mean_macro_f1": 0.8850233979333225,
+            "std_macro_f1": 0.02607636325611823,
+            "fold_scores": [
+              0.9145170851445451,
+              0.8650259799134252,
+              0.875527128741997
+            ]
+          }
+        ],
+        "n_splits": 3,
+        "scoring": "macro_f1",
+        "n_training_subjects": 21
+      },
+      "fit_time_s": 6.4165,
+      "predict_time_s": 0.1003,
+      "total_time_s": 6.5169,
+      "score_kind": "probability",
+      "n_train": 7352,
+      "n_train_subjects": 21,
+      "model_path": "models/baseline_random_forest.joblib",
+      "predictions_path": "reports/predictions/baseline_random_forest.npz",
+      "metrics": {
+        "n_samples": 2947,
+        "accuracy": 0.9250084832032576,
+        "balanced_accuracy": 0.9216984304250618,
+        "macro_f1": 0.9229221923062427,
+        "weighted_f1": 0.9247693070030639,
+        "cohen_kappa": 0.9098429064691117,
+        "per_class": [
+          {
+            "code": 0,
+            "activity": "WALKING",
+            "precision": 0.8917910447761194,
+            "recall": 0.9637096774193549,
+            "f1": 0.9263565891472868,
+            "support": 496
+          },
+          {
+            "code": 1,
+            "activity": "WALKING_UPSTAIRS",
+            "precision": 0.8918918918918919,
+            "recall": 0.910828025477707,
+            "f1": 0.9012605042016807,
+            "support": 471
+          },
+          {
+            "code": 2,
+            "activity": "WALKING_DOWNSTAIRS",
+            "precision": 0.9567567567567568,
+            "recall": 0.8428571428571429,
+            "f1": 0.8962025316455696,
+            "support": 420
+          },
+          {
+            "code": 3,
+            "activity": "SITTING",
+            "precision": 0.9159663865546218,
+            "recall": 0.8879837067209776,
+            "f1": 0.9017580144777663,
+            "support": 491
+          },
+          {
+            "code": 4,
+            "activity": "STANDING",
+            "precision": 0.8994515539305301,
+            "recall": 0.924812030075188,
+            "f1": 0.9119555143651529,
+            "support": 532
+          },
+          {
+            "code": 5,
+            "activity": "LAYING",
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 537
+          }
+        ],
+        "top_confusions": [
+          {
+            "true": "SITTING",
+            "predicted": "STANDING",
+            "count": 55,
+            "rate_of_true": 0.112
+          },
+          {
+            "true": "WALKING_DOWNSTAIRS",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 44,
+            "rate_of_true": 0.1048
+          },
+          {
+            "true": "STANDING",
+            "predicted": "SITTING",
+            "count": 40,
+            "rate_of_true": 0.0752
+          },
+          {
+            "true": "WALKING_UPSTAIRS",
+            "predicted": "WALKING",
+            "count": 36,
+            "rate_of_true": 0.0764
+          },
+          {
+            "true": "WALKING_DOWNSTAIRS",
+            "predicted": "WALKING",
+            "count": 22,
+            "rate_of_true": 0.0524
+          },
+          {
+            "true": "WALKING",
+            "predicted": "WALKING_DOWNSTAIRS",
+            "count": 10,
+            "rate_of_true": 0.0202
+          },
+          {
+            "true": "WALKING",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 8,
+            "rate_of_true": 0.0161
+          },
+          {
+            "true": "WALKING_UPSTAIRS",
+            "predicted": "WALKING_DOWNSTAIRS",
+            "count": 6,
+            "rate_of_true": 0.0127
+          }
+        ],
+        "class_distribution": {
+          "WALKING": 496,
+          "WALKING_UPSTAIRS": 471,
+          "WALKING_DOWNSTAIRS": 420,
+          "SITTING": 491,
+          "STANDING": 532,
+          "LAYING": 537
+        },
+        "confusion_matrix": [
+          [
+            478,
+            8,
+            10,
+            0,
+            0,
+            0
+          ],
+          [
+            36,
+            429,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            22,
+            44,
+            354,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            436,
+            55,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            40,
+            492,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            537
+          ]
+        ],
+        "log_loss": 0.2534228528433879
+      },
+      "per_subject": [
+        {
+          "subject": 2,
+          "n_samples": 302,
+          "n_classes_present": 6,
+          "accuracy": 0.9437086092715232,
+          "balanced_accuracy": 0.9385567632850241,
+          "macro_f1": 0.9402519581686665
+        },
+        {
+          "subject": 4,
+          "n_samples": 317,
+          "n_classes_present": 6,
+          "accuracy": 0.9242902208201893,
+          "balanced_accuracy": 0.921949531949532,
+          "macro_f1": 0.9238402697907403
+        },
+        {
+          "subject": 9,
+          "n_samples": 288,
+          "n_classes_present": 6,
+          "accuracy": 0.8611111111111112,
+          "balanced_accuracy": 0.8605291005291006,
+          "macro_f1": 0.860722126549644
+        },
+        {
+          "subject": 10,
+          "n_samples": 294,
+          "n_classes_present": 6,
+          "accuracy": 0.8537414965986394,
+          "balanced_accuracy": 0.8507950732626232,
+          "macro_f1": 0.8475698387463093
+        },
+        {
+          "subject": 12,
+          "n_samples": 320,
+          "n_classes_present": 6,
+          "accuracy": 0.959375,
+          "balanced_accuracy": 0.9575331715740923,
+          "macro_f1": 0.9575793052624526
+        },
+        {
+          "subject": 13,
+          "n_samples": 327,
+          "n_classes_present": 6,
+          "accuracy": 0.9541284403669725,
+          "balanced_accuracy": 0.9475322043711101,
+          "macro_f1": 0.9507544953465258
+        },
+        {
+          "subject": 18,
+          "n_samples": 364,
+          "n_classes_present": 6,
+          "accuracy": 0.8708791208791209,
+          "balanced_accuracy": 0.8578947368421052,
+          "macro_f1": 0.8331564374635603
+        },
+        {
+          "subject": 20,
+          "n_samples": 354,
+          "n_classes_present": 6,
+          "accuracy": 0.943502824858757,
+          "balanced_accuracy": 0.9355614973262032,
+          "macro_f1": 0.9348975523099591
+        },
+        {
+          "subject": 24,
+          "n_samples": 381,
+          "n_classes_present": 6,
+          "accuracy": 0.994750656167979,
+          "balanced_accuracy": 0.9941448382126348,
+          "macro_f1": 0.9942215878306689
+        }
+      ],
+      "per_subject_aggregate": {
+        "accuracy": {
+          "n": 9,
+          "mean": 0.9228319422304769,
+          "std": 0.049540968893224825,
+          "median": 0.943502824858757,
+          "min": 0.8537414965986394,
+          "max": 0.994750656167979,
+          "ci95": [
+            0.8847513825205444,
+            0.9609125019404094
+          ]
+        },
+        "balanced_accuracy": {
+          "n": 9,
+          "mean": 0.9182774352613805,
+          "std": 0.050511138665148635,
+          "median": 0.9355614973262032,
+          "min": 0.8507950732626232,
+          "max": 0.9941448382126348,
+          "ci95": [
+            0.8794511370494792,
+            0.9571037334732818
+          ]
+        },
+        "macro_f1": {
+          "n": 9,
+          "mean": 0.915888174607614,
+          "std": 0.05552403616478654,
+          "median": 0.9348975523099591,
+          "min": 0.8331564374635603,
+          "max": 0.9942215878306689,
+          "ci95": [
+            0.8732086222745394,
+            0.9585677269406885
+          ]
+        },
+        "n_folds": 9
+      }
+    },
+    "svm": {
+      "display_name": "SVM (RBF)",
+      "params": {
+        "kernel": "rbf",
+        "gamma": "scale",
+        "cache_size": 1000,
+        "probability": false,
+        "C": 10.0
+      },
+      "selection": {
+        "method": "GroupKFold(n_splits=3) pada subjek data latih",
+        "params": {
+          "kernel": "rbf",
+          "gamma": "scale",
+          "cache_size": 1000,
+          "probability": false,
+          "C": 10.0
+        },
+        "selected": {
+          "C": 10.0
+        },
+        "cv_results": [
+          {
+            "params": {
+              "C": 1.0
+            },
+            "mean_macro_f1": 0.8934897619589673,
+            "std_macro_f1": 0.037280031353137774,
+            "fold_scores": [
+              0.9335555695851824,
+              0.887089503968857,
+              0.8598242123228627
+            ]
+          },
+          {
+            "params": {
+              "C": 10.0
+            },
+            "mean_macro_f1": 0.8943744723022894,
+            "std_macro_f1": 0.03668701792096518,
+            "fold_scores": [
+              0.9339455457586743,
+              0.8876860685834721,
+              0.8614918025647218
+            ]
+          }
+        ],
+        "n_splits": 3,
+        "scoring": "macro_f1",
+        "n_training_subjects": 21
+      },
+      "fit_time_s": 2.576,
+      "predict_time_s": 3.6466,
+      "total_time_s": 6.2226,
+      "score_kind": "normalized_decision_score",
+      "n_train": 7352,
+      "n_train_subjects": 21,
+      "model_path": "models/baseline_svm.joblib",
+      "predictions_path": "reports/predictions/baseline_svm.npz",
+      "metrics": {
+        "n_samples": 2947,
+        "accuracy": 0.9548693586698337,
+        "balanced_accuracy": 0.9530898383337371,
+        "macro_f1": 0.9539526068493674,
+        "weighted_f1": 0.9547368625658261,
+        "cohen_kappa": 0.9457523033932578,
+        "per_class": [
+          {
+            "code": 0,
+            "activity": "WALKING",
+            "precision": 0.9545454545454546,
+            "recall": 0.9737903225806451,
+            "f1": 0.9640718562874252,
+            "support": 496
+          },
+          {
+            "code": 1,
+            "activity": "WALKING_UPSTAIRS",
+            "precision": 0.9322381930184805,
+            "recall": 0.9639065817409767,
+            "f1": 0.9478079331941545,
+            "support": 471
+          },
+          {
+            "code": 2,
+            "activity": "WALKING_DOWNSTAIRS",
+            "precision": 0.9746835443037974,
+            "recall": 0.9166666666666666,
+            "f1": 0.9447852760736196,
+            "support": 420
+          },
+          {
+            "code": 3,
+            "activity": "SITTING",
+            "precision": 0.962800875273523,
+            "recall": 0.8961303462321792,
+            "f1": 0.9282700421940928,
+            "support": 491
+          },
+          {
+            "code": 4,
+            "activity": "STANDING",
+            "precision": 0.9147424511545293,
+            "recall": 0.9680451127819549,
+            "f1": 0.9406392694063926,
+            "support": 532
+          },
+          {
+            "code": 5,
+            "activity": "LAYING",
+            "precision": 0.9962894248608535,
+            "recall": 1.0,
+            "f1": 0.9981412639405205,
+            "support": 537
+          }
+        ],
+        "top_confusions": [
+          {
+            "true": "SITTING",
+            "predicted": "STANDING",
+            "count": 48,
+            "rate_of_true": 0.0978
+          },
+          {
+            "true": "WALKING_DOWNSTAIRS",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 27,
+            "rate_of_true": 0.0643
+          },
+          {
+            "true": "STANDING",
+            "predicted": "SITTING",
+            "count": 17,
+            "rate_of_true": 0.032
+          },
+          {
+            "true": "WALKING_UPSTAIRS",
+            "predicted": "WALKING",
+            "count": 15,
+            "rate_of_true": 0.0318
+          },
+          {
+            "true": "WALKING",
+            "predicted": "WALKING_DOWNSTAIRS",
+            "count": 8,
+            "rate_of_true": 0.0161
+          },
+          {
+            "true": "WALKING_DOWNSTAIRS",
+            "predicted": "WALKING",
+            "count": 8,
+            "rate_of_true": 0.019
+          },
+          {
+            "true": "WALKING",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 5,
+            "rate_of_true": 0.0101
+          },
+          {
+            "true": "WALKING_UPSTAIRS",
+            "predicted": "WALKING_DOWNSTAIRS",
+            "count": 2,
+            "rate_of_true": 0.0042
+          },
+          {
+            "true": "SITTING",
+            "predicted": "LAYING",
+            "count": 2,
+            "rate_of_true": 0.0041
+          },
+          {
+            "true": "SITTING",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 1,
+            "rate_of_true": 0.002
+          }
+        ],
+        "class_distribution": {
+          "WALKING": 496,
+          "WALKING_UPSTAIRS": 471,
+          "WALKING_DOWNSTAIRS": 420,
+          "SITTING": 491,
+          "STANDING": 532,
+          "LAYING": 537
+        },
+        "confusion_matrix": [
+          [
+            483,
+            5,
+            8,
+            0,
+            0,
+            0
+          ],
+          [
+            15,
+            454,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            27,
+            385,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            440,
+            48,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            17,
+            515,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            537
+          ]
+        ],
+        "log_loss": 0.4562117671553868
+      },
+      "per_subject": [
+        {
+          "subject": 2,
+          "n_samples": 302,
+          "n_classes_present": 6,
+          "accuracy": 0.9768211920529801,
+          "balanced_accuracy": 0.9746376811594203,
+          "macro_f1": 0.9761295822676898
+        },
+        {
+          "subject": 4,
+          "n_samples": 317,
+          "n_classes_present": 6,
+          "accuracy": 0.9747634069400631,
+          "balanced_accuracy": 0.9754456654456655,
+          "macro_f1": 0.9744632977332305
+        },
+        {
+          "subject": 9,
+          "n_samples": 288,
+          "n_classes_present": 6,
+          "accuracy": 0.8993055555555556,
+          "balanced_accuracy": 0.8987150415721844,
+          "macro_f1": 0.8982400285592712
+        },
+        {
+          "subject": 10,
+          "n_samples": 294,
+          "n_classes_present": 6,
+          "accuracy": 0.9047619047619048,
+          "balanced_accuracy": 0.9100042419826978,
+          "macro_f1": 0.9037580693241071
+        },
+        {
+          "subject": 12,
+          "n_samples": 320,
+          "n_classes_present": 6,
+          "accuracy": 0.959375,
+          "balanced_accuracy": 0.9575766716943188,
+          "macro_f1": 0.9592472117436972
+        },
+        {
+          "subject": 13,
+          "n_samples": 327,
+          "n_classes_present": 6,
+          "accuracy": 0.9755351681957186,
+          "balanced_accuracy": 0.9716312056737588,
+          "macro_f1": 0.9735671622823738
+        },
+        {
+          "subject": 18,
+          "n_samples": 364,
+          "n_classes_present": 6,
+          "accuracy": 0.967032967032967,
+          "balanced_accuracy": 0.9636363636363635,
+          "macro_f1": 0.9639668367346937
+        },
+        {
+          "subject": 20,
+          "n_samples": 354,
+          "n_classes_present": 6,
+          "accuracy": 0.9209039548022598,
+          "balanced_accuracy": 0.9051738171399735,
+          "macro_f1": 0.9068314655519871
+        },
+        {
+          "subject": 24,
+          "n_samples": 381,
+          "n_classes_present": 6,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      ],
+      "per_subject_aggregate": {
+        "accuracy": {
+          "n": 9,
+          "mean": 0.95316657214905,
+          "std": 0.03576906356061464,
+          "median": 0.967032967032967,
+          "min": 0.8993055555555556,
+          "max": 1.0,
+          "ci95": [
+            0.9256720359879973,
+            0.9806611083101027
+          ]
+        },
+        "balanced_accuracy": {
+          "n": 9,
+          "mean": 0.9507578542560425,
+          "std": 0.0365714845395876,
+          "median": 0.9636363636363635,
+          "min": 0.8987150415721844,
+          "max": 1.0,
+          "ci95": [
+            0.9226465227297611,
+            0.978869185782324
+          ]
+        },
+        "macro_f1": {
+          "n": 9,
+          "mean": 0.9506892949107834,
+          "std": 0.03757302824537318,
+          "median": 0.9639668367346937,
+          "min": 0.8982400285592712,
+          "max": 1.0,
+          "ci95": [
+            0.9218081087421255,
+            0.9795704810794412
+          ]
+        },
+        "n_folds": 9
+      }
+    },
+    "cnn": {
+      "display_name": "1D-CNN",
+      "config": {
+        "conv_channels": [
+          32,
+          64,
+          128
+        ],
+        "kernel_sizes": [
+          5,
+          5,
+          3
+        ],
+        "dropout": 0.3,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "batch_size": 64,
+        "max_epochs": 40,
+        "patience": 7,
+        "val_subject_fraction": 0.2,
+        "augment": false,
+        "augment_copies": 1,
+        "seed": 42,
+        "n_classes": 6,
+        "in_channels": 9,
+        "window_size": 128
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 0.438378,
+          "val_loss": 0.327494,
+          "val_accuracy": 0.905714,
+          "val_macro_f1": 0.90955
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.13874,
+          "val_loss": 0.333872,
+          "val_accuracy": 0.88,
+          "val_macro_f1": 0.88736
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.121033,
+          "val_loss": 0.278526,
+          "val_accuracy": 0.905,
+          "val_macro_f1": 0.909273
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.108351,
+          "val_loss": 0.276274,
+          "val_accuracy": 0.906429,
+          "val_macro_f1": 0.910236
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.109666,
+          "val_loss": 0.338196,
+          "val_accuracy": 0.882143,
+          "val_macro_f1": 0.892507
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.109735,
+          "val_loss": 0.330361,
+          "val_accuracy": 0.892857,
+          "val_macro_f1": 0.899154
+        },
+        {
+          "epoch": 7,
+          "train_loss": 0.102985,
+          "val_loss": 0.304593,
+          "val_accuracy": 0.904286,
+          "val_macro_f1": 0.908471
+        },
+        {
+          "epoch": 8,
+          "train_loss": 0.09781,
+          "val_loss": 0.33582,
+          "val_accuracy": 0.888571,
+          "val_macro_f1": 0.898356
+        },
+        {
+          "epoch": 9,
+          "train_loss": 0.100339,
+          "val_loss": 0.477996,
+          "val_accuracy": 0.855714,
+          "val_macro_f1": 0.852279
+        },
+        {
+          "epoch": 10,
+          "train_loss": 0.100131,
+          "val_loss": 0.355988,
+          "val_accuracy": 0.892857,
+          "val_macro_f1": 0.896187
+        },
+        {
+          "epoch": 11,
+          "train_loss": 0.092464,
+          "val_loss": 0.380528,
+          "val_accuracy": 0.889286,
+          "val_macro_f1": 0.891973
+        }
+      ],
+      "best_epoch": 4,
+      "n_parameters": 37702,
+      "val_subjects": [
+        3,
+        16,
+        22,
+        23
+      ],
+      "best_val_macro_f1": 0.9102356946504128,
+      "fit_time_s": 18.8361,
+      "predict_time_s": 0.2607,
+      "total_time_s": 19.0968,
+      "score_kind": "probability",
+      "n_train": 7352,
+      "n_train_subjects": 21,
+      "model_path": "models/baseline_cnn.pt",
+      "predictions_path": "reports/predictions/baseline_cnn.npz",
+      "metrics": {
+        "n_samples": 2947,
+        "accuracy": 0.9104173736002714,
+        "balanced_accuracy": 0.9116727984382346,
+        "macro_f1": 0.9120721225155427,
+        "weighted_f1": 0.9107076087439517,
+        "cohen_kappa": 0.8923446038702685,
+        "per_class": [
+          {
+            "code": 0,
+            "activity": "WALKING",
+            "precision": 0.9610136452241715,
+            "recall": 0.9939516129032258,
+            "f1": 0.977205153617443,
+            "support": 496
+          },
+          {
+            "code": 1,
+            "activity": "WALKING_UPSTAIRS",
+            "precision": 0.9837587006960556,
+            "recall": 0.9002123142250531,
+            "f1": 0.9401330376940134,
+            "support": 471
+          },
+          {
+            "code": 2,
+            "activity": "WALKING_DOWNSTAIRS",
+            "precision": 0.9260089686098655,
+            "recall": 0.9833333333333333,
+            "f1": 0.953810623556582,
+            "support": 420
+          },
+          {
+            "code": 3,
+            "activity": "SITTING",
+            "precision": 0.8607888631090487,
+            "recall": 0.7556008146639511,
+            "f1": 0.8047722342733189,
+            "support": 491
+          },
+          {
+            "code": 4,
+            "activity": "STANDING",
+            "precision": 0.7662337662337663,
+            "recall": 0.8872180451127819,
+            "f1": 0.8222996515679443,
+            "support": 532
+          },
+          {
+            "code": 5,
+            "activity": "LAYING",
+            "precision": 1.0,
+            "recall": 0.9497206703910615,
+            "f1": 0.9742120343839542,
+            "support": 537
+          }
+        ],
+        "top_confusions": [
+          {
+            "true": "SITTING",
+            "predicted": "STANDING",
+            "count": 117,
+            "rate_of_true": 0.2383
+          },
+          {
+            "true": "STANDING",
+            "predicted": "SITTING",
+            "count": 60,
+            "rate_of_true": 0.1128
+          },
+          {
+            "true": "WALKING_UPSTAIRS",
+            "predicted": "WALKING_DOWNSTAIRS",
+            "count": 30,
+            "rate_of_true": 0.0637
+          },
+          {
+            "true": "LAYING",
+            "predicted": "STANDING",
+            "count": 27,
+            "rate_of_true": 0.0503
+          },
+          {
+            "true": "WALKING_UPSTAIRS",
+            "predicted": "WALKING",
+            "count": 17,
+            "rate_of_true": 0.0361
+          },
+          {
+            "true": "WALKING_DOWNSTAIRS",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 4,
+            "rate_of_true": 0.0095
+          },
+          {
+            "true": "WALKING",
+            "predicted": "WALKING_DOWNSTAIRS",
+            "count": 3,
+            "rate_of_true": 0.006
+          },
+          {
+            "true": "WALKING_DOWNSTAIRS",
+            "predicted": "WALKING",
+            "count": 3,
+            "rate_of_true": 0.0071
+          },
+          {
+            "true": "SITTING",
+            "predicted": "WALKING_UPSTAIRS",
+            "count": 3,
+            "rate_of_true": 0.0061
+          }
+        ],
+        "class_distribution": {
+          "WALKING": 496,
+          "WALKING_UPSTAIRS": 471,
+          "WALKING_DOWNSTAIRS": 420,
+          "SITTING": 491,
+          "STANDING": 532,
+          "LAYING": 537
+        },
+        "confusion_matrix": [
+          [
+            493,
+            0,
+            3,
+            0,
+            0,
+            0
+          ],
+          [
+            17,
+            424,
+            30,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            4,
+            413,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            371,
+            117,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            60,
+            472,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            27,
+            510
+          ]
+        ],
+        "log_loss": 0.25889100584823704
+      },
+      "per_subject": [
+        {
+          "subject": 2,
+          "n_samples": 302,
+          "n_classes_present": 6,
+          "accuracy": 0.8940397350993378,
+          "balanced_accuracy": 0.8840579710144928,
+          "macro_f1": 0.873015873015873
+        },
+        {
+          "subject": 4,
+          "n_samples": 317,
+          "n_classes_present": 6,
+          "accuracy": 0.9589905362776026,
+          "balanced_accuracy": 0.9587830687830688,
+          "macro_f1": 0.9584731932774605
+        },
+        {
+          "subject": 9,
+          "n_samples": 288,
+          "n_classes_present": 6,
+          "accuracy": 0.7673611111111112,
+          "balanced_accuracy": 0.7636205593348451,
+          "macro_f1": 0.7487366462914129
+        },
+        {
+          "subject": 10,
+          "n_samples": 294,
+          "n_classes_present": 6,
+          "accuracy": 0.6326530612244898,
+          "balanced_accuracy": 0.6425775059856846,
+          "macro_f1": 0.6421454651157442
+        },
+        {
+          "subject": 12,
+          "n_samples": 320,
+          "n_classes_present": 6,
+          "accuracy": 0.99375,
+          "balanced_accuracy": 0.9934640522875817,
+          "macro_f1": 0.993978494623656
+        },
+        {
+          "subject": 13,
+          "n_samples": 327,
+          "n_classes_present": 6,
+          "accuracy": 0.9602446483180428,
+          "balanced_accuracy": 0.9554928354320452,
+          "macro_f1": 0.9577637847742796
+        },
+        {
+          "subject": 18,
+          "n_samples": 364,
+          "n_classes_present": 6,
+          "accuracy": 0.9642857142857143,
+          "balanced_accuracy": 0.9619883040935672,
+          "macro_f1": 0.9649210204039272
+        },
+        {
+          "subject": 20,
+          "n_samples": 354,
+          "n_classes_present": 6,
+          "accuracy": 0.9548022598870056,
+          "balanced_accuracy": 0.9595959595959597,
+          "macro_f1": 0.9605505889030793
+        },
+        {
+          "subject": 24,
+          "n_samples": 381,
+          "n_classes_present": 6,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      ],
+      "per_subject_aggregate": {
+        "accuracy": {
+          "n": 9,
+          "mean": 0.9029030073559228,
+          "std": 0.12352198310516219,
+          "median": 0.9589905362776026,
+          "min": 0.6326530612244898,
+          "max": 1.0,
+          "ci95": [
+            0.8079556060795484,
+            0.9978504086322971
+          ]
+        },
+        "balanced_accuracy": {
+          "n": 9,
+          "mean": 0.9021755840585828,
+          "std": 0.12131668440970957,
+          "median": 0.9587830687830688,
+          "min": 0.6425775059856846,
+          "max": 1.0,
+          "ci95": [
+            0.8089233254192331,
+            0.9954278426979325
+          ]
+        },
+        "macro_f1": {
+          "n": 9,
+          "mean": 0.8999538962672702,
+          "std": 0.12428119660506315,
+          "median": 0.9584731932774605,
+          "min": 0.6421454651157442,
+          "max": 1.0,
+          "ci95": [
+            0.8044229118341377,
+            0.9954848807004026
+          ]
+        },
+        "n_folds": 9
+      }
+    }
+  },
+  "model_config": {
+    "random_forest": {
+      "params": {
+        "n_estimators": 300,
+        "n_jobs": -1,
+        "max_features": "sqrt",
+        "min_samples_leaf": 3
+      },
+      "selection_method": "GroupKFold(n_splits=3) pada subjek data latih"
+    },
+    "svm": {
+      "params": {
+        "kernel": "rbf",
+        "gamma": "scale",
+        "cache_size": 1000,
+        "probability": false,
+        "C": 10.0
+      },
+      "selection_method": "GroupKFold(n_splits=3) pada subjek data latih"
+    },
+    "cnn": {
+      "config": {
+        "conv_channels": [
+          32,
+          64,
+          128
+        ],
+        "kernel_sizes": [
+          5,
+          5,
+          3
+        ],
+        "dropout": 0.3,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "batch_size": 64,
+        "max_epochs": 40,
+        "patience": 7,
+        "val_subject_fraction": 0.2,
+        "augment": false,
+        "augment_copies": 1,
+        "seed": 42,
+        "n_classes": 6,
+        "in_channels": 9,
+        "window_size": 128
+      }
+    }
+  },
+  "status": "complete"
+}

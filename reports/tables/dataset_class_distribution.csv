@@ -1,0 +1,7 @@
+code,activity,display,n,pct
+0,WALKING,Walking,1722,16.72
+1,WALKING_UPSTAIRS,Walking Upstairs,1544,14.99
+2,WALKING_DOWNSTAIRS,Walking Downstairs,1406,13.65
+3,SITTING,Sitting,1777,17.25
+4,STANDING,Standing,1906,18.51
+5,LAYING,Laying,1944,18.88

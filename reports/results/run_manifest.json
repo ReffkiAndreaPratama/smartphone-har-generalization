@@ -1,0 +1,114 @@
+{
+  "run_id": "2026-10-22T13:19:37+07:00",
+  "mode": "research",
+  "seed": 42,
+  "quick": false,
+  "stages_requested": [
+    "baseline",
+    "loso",
+    "group-cv",
+    "improvement",
+    "cross-device"
+  ],
+  "config_path": "D:\\projects\\smartphone-har-generalization\\config\\config.yaml",
+  "environment": {
+    "timestamp": "2026-10-22T13:19:37+07:00",
+    "python": "3.11.9",
+    "executable": "C:\\Users\\reffk\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
+    "cpu_count": 20,
+    "packages": {
+      "numpy": "2.4.6",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.17.1",
+      "matplotlib": "3.9.2",
+      "seaborn": "0.13.2",
+      "joblib": "1.4.2",
+      "PyYAML": "6.0.3",
+      "torch": "2.5.1+cpu",
+      "streamlit": "1.39.0",
+      "pytest": "9.1.1"
+    },
+    "torch": {
+      "version": "2.5.1+cpu",
+      "cuda_available": false,
+      "threads": 8
+    },
+    "git_commit": null
+  },
+  "stage_results": {
+    "baseline": {
+      "status": "complete",
+      "duration_s": 87.275,
+      "artifacts": [
+        "reports/results/baseline.json",
+        "reports/results/model_config.json"
+      ]
+    },
+    "loso": {
+      "status": "complete",
+      "duration_s": 447.187,
+      "artifacts": [
+        "reports/results/cross_user.json"
+      ]
+    },
+    "group-cv": {
+      "status": "complete",
+      "duration_s": 162.579,
+      "artifacts": [
+        "reports/results/cross_user.json"
+      ]
+    },
+    "improvement": {
+      "status": "complete",
+      "duration_s": 865.819,
+      "artifacts": [
+        "reports/results/improvement.json"
+      ]
+    },
+    "cross-device": {
+      "status": "complete",
+      "duration_s": 0.002,
+      "artifacts": [
+        "reports/results/cross_device.json"
+      ]
+    }
+  },
+  "status": "complete",
+  "started_at": "2026-10-22T13:19:37+07:00",
+  "dataset": {
+    "source": "uci_har",
+    "is_synthetic": false,
+    "n_samples": 10299,
+    "n_subjects": 30,
+    "notice": null
+  },
+  "elapsed_s": 1620.317,
+  "finished_at": "2026-10-22T13:46:37+07:00",
+  "report": {
+    "status": "complete",
+    "duration_s": 10.542,
+    "summary": "D:\\projects\\smartphone-har-generalization\\reports\\experiment_summary.md",
+    "figures": [
+      "figures/01_class_distribution.png",
+      "figures/02_samples_per_subject.png",
+      "figures/03_feature_groups.png",
+      "figures/04_model_comparison.png",
+      "figures/05_per_class_f1.png",
+      "figures/06_confusion_baseline_random_forest.png",
+      "figures/06_confusion_baseline_svm.png",
+      "figures/06_confusion_baseline_cnn.png",
+      "figures/07_baseline_vs_cross_user.png",
+      "figures/08_cross_user_per_subject.png",
+      "figures/09_cross_user_variation.png",
+      "figures/loso_confusion_random_forest.png",
+      "figures/loso_confusion_svm.png",
+      "figures/loso_confusion_cnn.png",
+      "figures/10_improvement_comparison.png",
+      "figures/11_timing.png"
+    ]
+  }
+}

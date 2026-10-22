@@ -24,6 +24,8 @@ reports/demo/predictions/*
 reports/demo/results/*
 reports/demo/tables/*
 reports/demo/figures/*
+reports/demo/experiment_summary.md
+reports/demo/report_manifest.json
 !reports/demo/.gitkeep
 
 # Python

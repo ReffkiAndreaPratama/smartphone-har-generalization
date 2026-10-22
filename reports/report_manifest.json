@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-10-22T13:46:37+07:00",
+  "mode": "research",
+  "is_synthetic": false,
+  "summary_path": "D:\\projects\\smartphone-har-generalization\\reports\\experiment_summary.md",
+  "figures": [
+    "figures/01_class_distribution.png",
+    "figures/02_samples_per_subject.png",
+    "figures/03_feature_groups.png",
+    "figures/04_model_comparison.png",
+    "figures/05_per_class_f1.png",
+    "figures/06_confusion_baseline_random_forest.png",
+    "figures/06_confusion_baseline_svm.png",
+    "figures/06_confusion_baseline_cnn.png",
+    "figures/07_baseline_vs_cross_user.png",
+    "figures/08_cross_user_per_subject.png",
+    "figures/09_cross_user_variation.png",
+    "figures/loso_confusion_random_forest.png",
+    "figures/loso_confusion_svm.png",
+    "figures/loso_confusion_cnn.png",
+    "figures/10_improvement_comparison.png",
+    "figures/11_timing.png"
+  ],
+  "tables": [
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\dataset_samples_per_subject.csv",
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\dataset_class_distribution.csv",
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\model_comparison.csv",
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\per_class_f1.csv",
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\cross_user_per_fold.csv",
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\cross_user_per_subject.csv",
+    "D:\\projects\\smartphone-har-generalization\\reports\\tables\\improvement_comparison.csv"
+  ],
+  "experiments": {
+    "baseline": true,
+    "cross_user": true,
+    "improvement": true,
+    "cross_device": "not_performed"
+  },
+  "counts": {
+    "n_samples": 10299,
+    "n_features": 561,
+    "n_subjects": 30
+  }
+}
