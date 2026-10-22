@@ -1,0 +1,51 @@
+# Dataset besar / hasil unduhan tidak di-commit
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/demo/*
+!data/demo/.gitkeep
+data/cross_device/*
+!data/cross_device/.gitkeep
+
+# Model biner (joblib / torch) tidak di-commit; dapat direproduksi
+models/*
+!models/.gitkeep
+models/demo/*
+!models/demo/.gitkeep
+
+# Prediksi mentah per eksperimen (besar dan dapat diregenerasi)
+reports/predictions/*
+!reports/predictions/.gitkeep
+reports/demo/predictions/*
+!reports/demo/predictions/.gitkeep
+
+# Hasil demo sintetis tidak di-commit sebagai hasil penelitian
+reports/demo/results/*
+reports/demo/tables/*
+reports/demo/figures/*
+!reports/demo/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Log / sementara
+*.log
+*.tmp
+.cache/

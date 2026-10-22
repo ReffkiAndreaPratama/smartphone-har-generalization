@@ -1,0 +1,96 @@
+project:
+  name: smartphone-har-generalization
+  title: >-
+    Analisis Generalisasi Model Pengenalan Aktivitas Manusia Berbasis Sensor
+    Smartphone pada Perbedaan Pengguna dan Perangkat
+  seed: 42
+  n_jobs: -1
+
+paths:
+  root: .
+  data_raw: data/raw
+  data_processed: data/processed
+  data_demo: data/demo
+  models: models
+  reports: reports
+  figures: reports/figures
+  tables: reports/tables
+  results: reports/results
+  predictions: reports/predictions
+
+dataset:
+  name: uci_har
+  primary_url: https://archive.ics.uci.edu/static/public/240/human+activity+recognition+using+smartphones.zip
+  mirror_url: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+  # SHA-256 dari mirror CloudFront yang dipakai saat pengembangan.
+  # File dari URL utama dapat memiliki hash berbeda karena paket ZIP-nya berbeda,
+  # tetapi isi dataset harus identik. Checksum bersifat informatif (diverifikasi
+  # dengan zipfile.testzip saat ekstraksi).
+  mirror_sha256: 50dabbc800629611831a85b8b71c87040525ca4af6a152c6ba9360ecee6b92dc
+  allow_demo_fallback: true
+  expected:
+    n_features: 561
+    n_subjects: 30
+    n_train: 7352
+    n_test: 2947
+    n_activities: 6
+    n_raw_channels: 9
+    window_size: 128
+    sampling_rate_hz: 50
+    window_seconds: 2.56
+    overlap: 0.5
+
+preprocessing:
+  # Standardisasi fitur dilakukan HANYA pada data latih (lihat src/preprocessing.py).
+  feature_scaler: standard
+  check_finite: true
+
+models:
+  random_forest:
+    n_estimators: 300
+    n_jobs: -1
+    selection_grid:
+      max_features: [sqrt]
+      min_samples_leaf: [1, 3]
+    inner_folds: 3
+  svm:
+    kernel: rbf
+    gamma: scale
+    cache_size: 1000
+    probability: false
+    selection_grid:
+      C: [1.0, 10.0]
+    inner_folds: 3
+  cnn:
+    conv_channels: [32, 64, 128]
+    kernel_sizes: [5, 5, 3]
+    dropout: 0.3
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    batch_size: 64
+    max_epochs: 40
+    patience: 7
+    val_subject_fraction: 0.2
+    augment: false
+
+experiments:
+  baseline:
+    models: [random_forest, svm, cnn]
+  loso:
+    models: [random_forest, svm]
+    max_folds: 30
+  group_cv_cnn:
+    n_splits: 6
+    models: [cnn]
+  improvement:
+    n_splits: 6
+    models: [random_forest, svm, cnn]
+    strategies: [base, subject_norm, calibration]
+    calibration_fraction: 0.1
+  cross_device:
+    enabled: false
+    manifest_path: data/cross_device/manifest.csv
+
+output:
+  figure_dpi: 200
+  random_seed_repeats: 1
