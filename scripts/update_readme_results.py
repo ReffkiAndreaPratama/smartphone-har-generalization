@@ -22,8 +22,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.utils import ProjectPaths, load_config, read_json  # noqa: E402
 
-START_MARKER = "<!-- HASIL-EKSPERIMEN -->"
-END_MARKER = "<!-- /HASIL-EKSPERIMEN -->"
+START_MARKER = "<!-- BEGIN-HASIL-EKSPERIMEN -->"
+END_MARKER = "<!-- END-HASIL-EKSPERIMEN -->"
 
 MODEL_ORDER = ["random_forest", "svm", "cnn"]
 MODEL_LABELS = {
@@ -417,6 +417,9 @@ def render_section(paths: ProjectPaths) -> str:
                 "sebagai hasil penelitian.\n\n"
             )
 
+    environment = manifest.get("environment") or {}
+    packages = environment.get("packages") or {}
+    commit = environment.get("git_commit")
     provenance_rows = [
         ["Run id", str(manifest.get("run_id", "-"))],
         ["Status run", str(manifest.get("status", "-"))],
@@ -425,6 +428,20 @@ def render_section(paths: ProjectPaths) -> str:
         ["Mulai", str(manifest.get("started_at", "-"))],
         ["Selesai", str(manifest.get("finished_at", "-"))],
         ["Durasi total", f"{float(manifest.get('elapsed_s', 0)) / 60:.1f} menit"],
+        [
+            "Git commit",
+            str(commit) if commit else "null (run dieksekusi sebelum repository diinisialisasi)",
+        ],
+        ["Python", str(environment.get("python", "-"))],
+        ["Platform", f"{environment.get('platform', '-')} / {environment.get('processor', '-')}"],
+        [
+            "Versi pustaka",
+            ", ".join(
+                f"{name} {packages.get(name, '-')}"
+                for name in ("numpy", "scikit-learn", "torch", "streamlit")
+                if name in packages
+            ),
+        ],
     ]
     stage_rows = []
     for stage, record in (manifest.get("stage_results") or {}).items():
@@ -501,8 +518,11 @@ def main() -> int:
     if not readme_path.is_absolute():
         readme_path = PROJECT_ROOT / readme_path
     text = readme_path.read_text(encoding="utf-8")
-    if START_MARKER not in text or END_MARKER not in text:
-        raise SystemExit("README tidak memuat penanda HASIL-EKSPERIMEN")
+    if text.count(START_MARKER) != 1 or text.count(END_MARKER) != 1:
+        raise SystemExit(
+            "README harus memuat tepat satu penanda BEGIN-HASIL-EKSPERIMEN dan "
+            "satu penanda END-HASIL-EKSPERIMEN"
+        )
     section = render_section(paths)
     head, rest = text.split(START_MARKER, 1)
     _, tail = rest.split(END_MARKER, 1)

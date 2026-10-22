@@ -263,7 +263,7 @@ python scripts/update_readme_results.py
 ```
 
 Skrip ini membaca `reports/results/*.json` lalu menulis ulang blok
-`<!-- HASIL-EKSPERIMEN -->` di `README.md`. Karena itu **angka pada README selalu
+"Hasil Eksperimen" di `README.md`. Karena itu **angka pada README selalu
 identik dengan artefak hasil** — tidak ada angka yang diketik manual.
 
 Perintah yang sering dipakai:
@@ -422,7 +422,7 @@ melatih dan dinilai.
 
 ## Hasil Eksperimen
 
-<!-- HASIL-EKSPERIMEN -->
+<!-- BEGIN-HASIL-EKSPERIMEN -->
 
 Angka di bawah ini dibaca langsung dari berkas JSON pada `reports/results/` yang dihasilkan `python scripts/run_experiments.py`. Laporan lengkap dengan tautan figur tersedia di [`reports/experiment_summary.md`](reports/experiment_summary.md).
 
@@ -437,6 +437,10 @@ Angka di bawah ini dibaca langsung dari berkas JSON pada `reports/results/` yang
 | Mulai | 2026-10-22T13:19:37+07:00 |
 | Selesai | 2026-10-22T13:46:37+07:00 |
 | Durasi total | 27.0 menit |
+| Git commit | null (run dieksekusi sebelum repository diinisialisasi) |
+| Python | 3.11.9 |
+| Platform | Windows-10-10.0.19045-SP0 / Intel64 Family 6 Model 79 Stepping 1, GenuineIntel |
+| Versi pustaka | numpy 2.4.6, scikit-learn 1.5.2, torch 2.5.1+cpu, streamlit 1.39.0 |
 
 | Tahap | Status | Durasi |
 | --- | --- | --- |
@@ -557,7 +561,7 @@ Prosedur lengkap: [`docs/cross_device_protocol.md`](docs/cross_device_protocol.m
 | `reports/figures/10_improvement_comparison.png` | Perbandingan strategi |
 | `reports/figures/11_timing.png` | Waktu komputasi |
 
-<!-- /HASIL-EKSPERIMEN -->
+<!-- END-HASIL-EKSPERIMEN -->
 
 ---
 
